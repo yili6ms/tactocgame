@@ -8,8 +8,7 @@ config :tactocgame, TactocgameWeb.Endpoint,
   server: false
 
 # In test we don't send emails.
-config :tactocgame, Tactocgame.Mailer,
-  adapter: Swoosh.Adapters.Test
+config :tactocgame, Tactocgame.Mailer, adapter: Swoosh.Adapters.Test
 
 # Print only warnings and errors during test
 config :logger, level: :warn
