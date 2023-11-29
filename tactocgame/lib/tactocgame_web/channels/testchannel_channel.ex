@@ -1,13 +1,29 @@
 defmodule TactocgameWeb.TestchannelChannel do
+  alias Gamecore.GameSingleServer
   use TactocgameWeb, :channel
 
   @impl true
-  def join("testchannel:lobby", payload, socket) do
+  def join(_, payload, socket) do
     if authorized?(payload) do
       {:ok, socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
+  end
+
+  @impl true
+  def handle_in("show", payload, socket) do
+    output = GameSingleServer.show_state()
+    {:reply, {:ok, output}, socket}
+  end
+
+  @impl true
+  def handle_in("operate", payload, socket) do
+    IO.inspect(payload)
+    newstate = GameSingleServer.parse_input(payload)
+    IO.inspect(newstate)
+    broadcast(socket, "operate", newstate)
+    {:noreply, socket}
   end
 
   # Channels can be used in a request/response fashion

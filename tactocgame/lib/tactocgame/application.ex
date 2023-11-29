@@ -13,7 +13,8 @@ defmodule Tactocgame.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Tactocgame.PubSub},
       # Start the Endpoint (http/https)
-      TactocgameWeb.Endpoint
+      TactocgameWeb.Endpoint,
+      {Gamecore.GameSingleServer, %{}}
       # Start a worker by calling: Tactocgame.Worker.start_link(arg)
       # {Tactocgame.Worker, arg}
     ]

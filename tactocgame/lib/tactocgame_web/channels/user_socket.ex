@@ -18,7 +18,7 @@ defmodule TactocgameWeb.UserSocket do
   #
   # See the [`Channels guide`](https://hexdocs.pm/phoenix/channels.html)
   # for further details.
-
+  channel "ping*", TactocgameWeb.TestchannelChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
